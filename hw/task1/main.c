@@ -56,6 +56,10 @@ int main(int argc, char* argv[]){
     }
 
     close(file);
+    if (file == -1) {
+        perror("Unexpected error when closing the file!");
+        exit(EXIT_FAILURE);
+    }
 
     return 0;
 }
