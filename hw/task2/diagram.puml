@@ -1,0 +1,16 @@
+@startuml diagram.puml
+participant Main
+participant PlacementTournament
+participant Algorithm
+participant Decider
+
+Main -> PlacementTournament : build(participants)
+PlacementTournament -> Algorithm : run(participants, decider)
+loop For each match
+Algorithm -> Decider : decide(player1, player2)
+Decider --> Algorithm : winner
+Algorithm -> PlacementTournament : MatchResult
+end
+PlacementTournament --> Main : results ready
+Main -> PlacementTournament : printPoints()
+@enduml
